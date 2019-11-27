@@ -1,0 +1,42 @@
+<% if current_user %>
+  <h1>Add Classmates, Connect with the School...</h1>
+  <p> Result : <%= @result_hash.to_json() %> </p>
+
+
+
+  <%= form_tag('/addclassmates' , method: :get) do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+
+  <table>
+
+    <thead>
+        <tr>
+            <td>User Name</td>
+        </tr>
+    </thead>
+
+    <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td ><%= user.email %>
+        <Button onClick='if (window.confirm("Are you sure?") )
+               {
+                             alert("Request has been sent to <%= user.email %> !");
+                           }
+                           '> Add </button>
+
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
+  </table>
+  <br/>
+  <%= link_to 'Sign Out' , destroy_user_session_path , method: :delete %><br/>
+  <%= link_to 'Go back to home' , root_path %>
+<% else %>
+  <%= controller.redirect_to root_path %>
+<% end %>
