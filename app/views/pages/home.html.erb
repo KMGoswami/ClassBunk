@@ -16,10 +16,10 @@
 <br/>
 <br/>
 
-<%  @posts["data"]["allPosts"].each do |post|%>
-<%= post["title"] %> <br/>
-<%= post["createdAt"] %> <br/>
-<%= post["images"].class %> <br/>
+<%  @posts.each do |post|%>
+<%= post.title %> <br/>
+<%= post.created_at %> <br/>
+<%= post.images.count %> images <br/>
 
 <hr>
 <% end %>

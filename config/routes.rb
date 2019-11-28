@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
   resources :posts
   root to: 'pages#home'
   #devise_for :users
@@ -12,7 +8,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         regestrations: 'users/regestrations'
-
       }
 
       devise_scope :user do

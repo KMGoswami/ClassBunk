@@ -1,10 +1,7 @@
 <% if current_user %>
   <h1>Add Classmates, Connect with the School...</h1>
-  <p> Result : <%= @result_hash.to_json() %> </p>
 
-
-
-  <%= form_tag('/addclassmates' , method: :get) do %>
+  <%= form_tag('/allUsers' , method: :get) do %>
     <%= text_field_tag :query %>
     <%= submit_tag 'Search' %>
   <% end %>

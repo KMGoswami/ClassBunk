@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if current_user
-      @posts = Post.where( " user_id == '#{current_user.id}' ")
+      @posts = Post.where( " user_id = '#{current_user.id}' ")
     else
       redirect_to :controller => 'pages', :action => 'home'
     end
