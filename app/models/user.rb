@@ -11,6 +11,8 @@ class User < ApplicationRecord
   #validates :name, presence: true
   #validates :email, presence: true, uniqueness: true
   has_many :posts
-  #has_many :classmates, :class_name => "Classmate", :foreign_key => "user_classmate_id"
+
+  has_many :sent_friendships, :class_name => 'Friendship', :foreign_key => 'sender_id'
+  has_many :received_friendships, :class_name => 'Friendship', :foreign_key => 'recipient_id'
 
 end

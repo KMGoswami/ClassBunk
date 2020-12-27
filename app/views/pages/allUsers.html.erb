@@ -17,13 +17,9 @@
     <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td ><%= user.email %>
-        <Button onClick='if (window.confirm("Are you sure?") )
-               {
-                             alert("Request has been sent to <%= user.email %> !");
-                           }
-                           '> Add </button>
-
+      <td ><%= user.email %></td>
+      <td>
+        <%= button_to "Add as classmate",  {:controller => "friendships", :action => "sendFriendRequest", :recipient_id => user.id} , method: :post %>
       </td>
 
     </tr>
@@ -32,6 +28,54 @@
 
   </table>
   <br/>
+
+  <table>
+    Friend requests
+    <thead>
+        <tr>
+            <td>User Name</td>
+        </tr>
+    </thead>
+
+    <tbody>
+  <% @pendingFriendRequests.each do |user| %>
+    <tr>
+      <td ><%= user.email %></td>
+      <td>
+        <%= button_to "Accept",  {:controller => "friendships", :action => "sendFriendRequest", :recipient_id => user.id} , method: :post %>
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
+  </table>
+  <br/>
+
+
+  <table>
+    Sent requests
+    <thead>
+        <tr>
+            <td>User Name</td>
+        </tr>
+    </thead>
+
+    <tbody>
+  <% @sentFriendRequests.each do |user| %>
+    <tr>
+      <td ><%= user.email %></td>
+      <td>
+        <%= button_to "Waiting...",  {:controller => "friendships", :action => "sendFriendRequest", :recipient_id => user.id} , method: :post %>
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
+  </table>
+  <br/>
+
   <%= link_to 'Sign Out' , destroy_user_session_path , method: :delete %><br/>
   <%= link_to 'Go back to home' , root_path %>
 <% else %>

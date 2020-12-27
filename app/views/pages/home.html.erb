@@ -1,6 +1,12 @@
 <h1>ClassBunk - Find Friends @ School</h1>
 
-<!-- <%= javascript_pack_tag 'hello_react' %> -->
+<hr>
+<%
+	time  = Time.now.strftime("%d/%m/%Y %H:%M:%S")
+%>
+<%= react_component("HelloWorld") %>
+<hr>
+<hr>
 
 <% if current_user %>
 <%= link_to 'All Users' , allUsers_path , method: :post %>

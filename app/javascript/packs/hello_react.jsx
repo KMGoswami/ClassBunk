@@ -19,8 +19,9 @@ Hello.propTypes = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+	let time = new Date();
   ReactDOM.render(
-    <Hello name="#{current_user.email}" />,
+    <Hello name={time.toString()} />,
     document.body.appendChild(document.createElement('div')),
   )
 })

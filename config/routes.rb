@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   #devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  post 'sendFriendRequest', to: 'friendships#sendFriendRequest' , as: :sendFriendRequest
+  #post 'friendRequests ', to: 'pages#sendFriendRequest' , as: :sendFriendRequest
+
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         regestrations: 'users/regestrations'
@@ -17,7 +20,7 @@ Rails.application.routes.draw do
         delete 'logout', to: 'devise/sessions#destroy'
         get 'post', to: 'post#new'
         post 'allUsers', to: 'pages#allUsers' , as: :allUsers
-        get 'allUsers', to: 'pages#allUsers'
+        get 'allUsers', to: 'pages#allUsers' , as: :allUsersGet
       end
 
 end
