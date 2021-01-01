@@ -2,7 +2,8 @@ class PagesController < ApplicationController
 
   def home
       @posts = Post.all
-
+      @loggedinUser = current_user
+      gon.current_user_info = @loggedinUser
   end
 
   def allUsers
@@ -40,8 +41,8 @@ class PagesController < ApplicationController
           @sentFriendships.each do |f|
               sentFriendshipIds.push(f.recipient_id.to_i) 
             end
-          
-        end        
+        end    
+            
         @sentFriendRequests = User.where({ id: sentFriendshipIds})
 
         @users = if params[:query]

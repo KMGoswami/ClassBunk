@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   post 'sendFriendRequest', to: 'friendships#sendFriendRequest' , as: :sendFriendRequest
+  get 'friendrequests' , to: 'friendships#friendrequests' , as: :friendrequests
+  get 'friends' , to: 'friendships#listFriends' , as: :friends
+  post 'acceptFriendRequest' , to: 'friendships#acceptFriendRequest' , as: :acceptFriendRequest
   #post 'friendRequests ', to: 'pages#sendFriendRequest' , as: :sendFriendRequest
 
   devise_for :users, controllers: {

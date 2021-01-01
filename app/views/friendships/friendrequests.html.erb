@@ -1,0 +1,55 @@
+<% if current_user %>
+<%= link_to 'All Users' , allUsers_path , method: :post %>
+<br/>
+
+<table>
+	<h2>Friends</h2>
+	<thead>
+		<tr>
+			<td>User Name</td>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @friends.each do |user| %>
+		<tr>
+			<td ><%= user.email %></td>
+			<td>
+				<%= button_to "View",  {:controller => "friendships", :action => "sendFriendRequest", :recipient_id => user.id} , method: :post %>
+			</td>
+
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>
+<br/>
+
+
+<table>
+	<h2>Friend requests</h2>
+	<thead>
+		<tr>
+			<td>User Name</td>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @pendingFriendRequests.each do |user| %>
+		<tr>
+			<td ><%= user.email %></td>
+			<td>
+				<%= button_to "Accept",  {:controller => "friendships", :action => "acceptFriendRequest", :sender_id => user.id , :recipient_id => current_user.id, } , method: :post %>
+			</td>
+
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>
+<br/>
+
+
+<% else %>
+<%= controller.redirect_to root_path %>
+<% end %>

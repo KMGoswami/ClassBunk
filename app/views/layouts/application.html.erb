@@ -4,17 +4,73 @@
     <title>ClassBunk</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= include_gon %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
+  <div class="jumbotron" style="padding: 10px;position: sticky;top: 0; z-index: 1">
+    <h3 style="margin: 0">ClassBunk - Connecting students...</h3>
     <% if current_user %>
-      <h2 align="right"> Current User <%= current_user.firstName %> <br/> <%= current_user.email %> </h2>
+    <%= link_to 'Search' , allUsers_path , method: :post  , class: "btn btn-inverse"%>
+    <%= link_to 'Friends' , friends_path , method: :get  , class: "btn btn-inverse"%>
+    <%= link_to 'My Posts', posts_path , class: "btn btn-inverse" %>
+    <%= link_to (current_user.firstName + ' ' + current_user.lastName), edit_user_registration_path , class: "btn btn-inverse" %>
+    <%= link_to 'Sign Out' , destroy_user_session_path , method: :delete , class: "btn btn-inverse" %>
+    <% else %>
+      <%= link_to 'Sign Up' , new_user_registration_path , class: "btn btn-inverse" %>
+      <%= link_to 'Sign In' , new_user_session_path , class: "btn btn-inverse"%>
     <% end %>
-    <!-- erb: paste this in view -->
-    <%= yield %>
+  </div>
+    
+    
+      <%= yield %>
+    
+    <footer class="static-bottom text-center text-lg-start" style="position: sticky;
+    bottom: 0;
+    width: 100%; background-color: rgba(0, 0, 0, 0.1); font-color: 'white';">
+  <!-- Grid container -->
+  <div class="container p-4" >
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0" style="font-color: 'white';">
+        <h5>ClassBunk</h5>
+
+        <p>
+          ClassBunk is built to connect the students and and provide them a platform where they can share their daily school life...!
+        </p>
+        <p>Developed by: Kartavya Goswami</p>
+      </div>
+      
+       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5>Navigation</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="/" class="text-dark">Home</a>
+          </li>
+          <% if current_user %>
+            <li><%= link_to 'All Users' , allUsers_path , method: :post  , class: "text-dark"%></li>
+            <li><%= link_to 'Sign Out' , destroy_user_session_path , method: :delete , class: "text-darke" %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up' , new_user_registration_path , class: "text-dark" %></li>
+            <li><%= link_to 'Sign In' , new_user_session_path , class: "text-darke"%></li>
+          <% end %>
+          <li>
+            <a href="#" class="text-dark">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); " >
+    © <%= Time.zone.now.year %> Copyright: <i>Dolphin Digital Developers Inc.</i>
+  </div>
+
+</footer>
+
   </body>
+
 </html>

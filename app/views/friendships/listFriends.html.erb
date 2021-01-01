@@ -1,0 +1,19 @@
+<div style="height: 100vh;"> 
+  <table>
+    <h5>My classmates</h5>
+    <tbody>
+<% if (@friends != nil && @friends.length() > 0) %>
+  <% @friends.each do |user| %>
+    <tr>
+      <td ><%= user.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+  </table>
+  <br/>
+<% else %>
+  <p>Search for your classmates and add them as your friend to start chatting with them....</p>
+  <%= link_to 'Find classmates' , allUsers_path , method: :post  , class: "btn btn-inverse"%>
+<% end %>
+</div>

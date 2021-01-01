@@ -1,26 +1,5 @@
-<h1>ClassBunk - Find Friends @ School</h1>
 
-<hr>
-<%
-	time  = Time.now.strftime("%d/%m/%Y %H:%M:%S")
-%>
 <%= react_component("HelloWorld") %>
-<hr>
-<hr>
-
-<% if current_user %>
-<%= link_to 'All Users' , allUsers_path , method: :post %>
-<%= link_to 'Sign Out' , destroy_user_session_path , method: :delete %>
-<%= link_to 'Upload New Post', new_post_path %> <br/>
-<%= link_to 'My Posts', posts_path %><br/>
-<%= link_to 'Edit Profile', edit_user_registration_path %>
-<% else %>
-<%= link_to 'Sign Up' , new_user_registration_path %>
-<%= link_to 'Sign In' , new_user_session_path %>
-<% end %>
-
-<br/>
-<br/>
 
 <%  @posts.each do |post|%>
 <%= post.title %> <br/>
@@ -29,3 +8,4 @@
 
 <hr>
 <% end %>
+

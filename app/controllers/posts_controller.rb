@@ -49,6 +49,7 @@ class PostsController < ApplicationController
   def create
     if current_user
               @post = current_user.posts.new(post_params)
+              
                 if @post.save
                   redirect_to "/posts"
                 else

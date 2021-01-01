@@ -1,5 +1,5 @@
 {
-  "name": "ClassBunk",
+  "name": "classbunk",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.12.10",
@@ -8,9 +8,30 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react_ujs": "^2.6.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMGoswami/ClassBunk.git"
+  },
+  "author": "Kartavya Goswami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMGoswami/ClassBunk/issues"
+  },
+  "homepage": "https://github.com/KMGoswami/ClassBunk#readme"
 }
