@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Validate that the follwoing environment variables are set before running the application.
 
-Things you may want to cover:
+The following variables are used in config/storage.yml file
+* **S3_Access_Key** = AWS Access key with access to S3
+* **S3_Secret_Key** = AWS Secret key
+* **S3_ClassBunkdev_bucket** = AWS S3 bucket name
 
-* Ruby version
+The following variables are used in config/database.yml file
+* **RDS_USERNAME** = AWS RDS Username
+* **RDS_PASSWORD** = AWS RDS Password
+* **RDS_HOST** = AWS RDS Endpoint
 
-* System dependencies
+Used in config/application.rb to allow RDS host to access our rails console
+* **RDS_DB_IP** = AWS RDC Host IP Address
 
-* Configuration
+Used in docker-compose.yml
+* **DATABASE_URL** = Database connection string ie. "postgres://RDS_USERNAME:RDS_PASSWORD@RDS_ENNPOINT:RDS_PORT/RDS_DB_NAME"
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+! You may need to change AWS Region and Database name in config/storage.yml(or database.yml) based on your AWS configurations.
